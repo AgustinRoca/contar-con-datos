@@ -8,3 +8,4 @@ __pycache__/
 # y volcados en output/ (pieza_visual.html / pieza_site.html + docs/).
 data/raw/
 data/clean/
+output/pieza_site_anon.html

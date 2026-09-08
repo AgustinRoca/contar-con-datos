@@ -1,6 +1,6 @@
 """
-Arma output/pieza_visual.html (el archivo que se publica como Artifact) a partir de
-tres fuentes separadas, para mantener el repo ordenado:
+Arma las distintas versiones de la pieza a partir de tres fuentes separadas,
+para mantener el repo ordenado:
 
   output/pieza_template.html  -- esqueleto HTML (titulo + body), con
                                   <link rel="stylesheet" href="pieza.css"> y
@@ -15,14 +15,28 @@ script hace el "inlineado" (pegar el CSS dentro de <style> y el JS dentro de
 <script>) para producir ese archivo final, sin tener que editar tres archivos
 como si fueran uno solo.
 
-Genera dos salidas a partir de la misma plantilla:
-  output/pieza_visual.html -- SIN <!DOCTYPE>/<html>/<head>/<body> propios, porque
-                               la plataforma de Artifacts envuelve el contenido
-                               con su propio esqueleto al publicar; este es el
-                               archivo que se sube como Artifact.
-  output/pieza_site.html   -- documento HTML completo y valido (doctype, charset
-                               utf-8, viewport, head/body), listo para subir tal
-                               cual a GitHub Pages u otro hosting estatico.
+Ademas resuelve dos cosas que varian segun donde se publique cada version:
+
+  - el video del cierre: incrustado en base64 para el Artifact (un solo archivo
+    autocontenido); referenciado como output/media/*.mp4 aparte para los sitios
+    estaticos (asi el navegador lo puede pedir por partes en vez de cargar un
+    HTML de +10 MB).
+  - la identidad del autor y la mencion al repositorio: "nombrada" (nombre real
+    + link al repo de GitHub personal) para el Artifact y para el sitio que va
+    en docs/ (github.io con nombre real); "anonima" (pseudonimo, sin link a
+    ningun repo identificable) para la entrega al concurso, que exige anonimato.
+
+Genera tres salidas:
+  output/pieza_visual.html      -- Artifact (privado), SIN <!DOCTYPE>/<html>/
+                                    <head>/<body> propios porque la plataforma
+                                    de Artifacts pone los suyos al publicar.
+                                    Video inline, identidad nombrada.
+  output/pieza_site.html        -- documento HTML completo y valido, para
+                                    docs/index.html (GitHub Pages con nombre
+                                    real). Video externo, identidad nombrada.
+  output/pieza_site_anon.html   -- igual que pieza_site.html pero con identidad
+                                    anonima, para la entrega al concurso (ej.
+                                    Cloudflare Pages / Netlify, sin git).
 
 Uso:
     python scripts/build_pieza.py
@@ -45,12 +59,23 @@ html = html.replace(
     f"<script>\n{js}\n</script>",
 )
 
-# Video de WhatsApp en el cierre: en pieza_visual.html (Artifact, un solo
-# archivo autocontenido) va incrustado en base64; en pieza_site.html (sitio
-# estatico real) se referencia como archivo aparte en output/media/, asi el
-# navegador lo puede pedir por partes en vez de cargar un HTML de +10 MB.
 WA_VIDEO = MEDIA / "whatsapp_video_cierre.mp4"
 WA_POSTER = MEDIA / "whatsapp_video_cierre_poster.jpg"
+
+REPO_URL = "https://github.com/AgustinRoca/contar-con-datos"
+IDENTITIES = {
+    "named": {
+        "author": "Agustín Roca",
+        "repo_line": (
+            f'Scripts de procesamiento y CSVs limpios: '
+            f'<a href="{REPO_URL}" target="_blank" rel="noopener">repositorio de GitHub</a>.'
+        ),
+    },
+    "anon": {
+        "author": "Bautista",
+        "repo_line": "Los scripts de procesamiento y CSVs limpios se harán públicos una vez finalizada la competencia.",
+    },
+}
 
 
 def with_video_refs(doc: str, *, inline: bool) -> str:
@@ -65,21 +90,17 @@ def with_video_refs(doc: str, *, inline: bool) -> str:
     return doc.replace("__WA_VIDEO_SRC__", video_src).replace("__WA_POSTER_SRC__", poster_src)
 
 
-visual_html = with_video_refs(html, inline=True)
-(OUT / "pieza_visual.html").write_text(visual_html, encoding="utf-8")
-print(f"Generado {OUT / 'pieza_visual.html'} ({len(visual_html):,} caracteres)".replace(",", "."))
+def with_identity(doc: str, *, identity: str) -> str:
+    ident = IDENTITIES[identity]
+    return doc.replace("__AUTHOR__", ident["author"]).replace("__REPO_LINE__", ident["repo_line"])
 
-# pieza_site.html: mismo contenido, pero como documento HTML completo y valido,
-# para subir directo a GitHub Pages (Artifacts pone su propio doctype/head/body,
-# pero un sitio estatico real necesita el suyo, con charset utf-8 explicito para
-# que los acentos no se rompan segun como el servidor sirva el archivo).
-site_body = with_video_refs(html, inline=False)
-title_start = site_body.find("<title>")
-title_end = site_body.find("</title>") + len("</title>")
-title_tag = site_body[title_start:title_end] if title_start != -1 else "<title>Contar con datos</title>"
-body_html = site_body[:title_start] + site_body[title_end:] if title_start != -1 else site_body
 
-site_html = f"""<!DOCTYPE html>
+def as_full_document(body_doc: str) -> str:
+    title_start = body_doc.find("<title>")
+    title_end = body_doc.find("</title>") + len("</title>")
+    title_tag = body_doc[title_start:title_end] if title_start != -1 else "<title>Contar con datos</title>"
+    body_html = body_doc[:title_start] + body_doc[title_end:] if title_start != -1 else body_doc
+    return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -92,6 +113,18 @@ site_html = f"""<!DOCTYPE html>
 </html>
 """
 
-(OUT / "pieza_site.html").write_text(site_html, encoding="utf-8")
-print(f"Generado {OUT / 'pieza_site.html'} ({len(site_html):,} caracteres)".replace(",", "."))
-print(f"Recorda subir tambien la carpeta {MEDIA}/ junto con pieza_site.html.")
+
+def build(name: str, *, inline_video: bool, identity: str, full_document: bool) -> None:
+    doc = with_identity(with_video_refs(html, inline=inline_video), identity=identity)
+    if full_document:
+        doc = as_full_document(doc)
+    path = OUT / name
+    path.write_text(doc, encoding="utf-8")
+    print(f"Generado {path} ({len(doc):,} caracteres)".replace(",", "."))
+
+
+build("pieza_visual.html", inline_video=True, identity="named", full_document=False)
+build("pieza_site.html", inline_video=False, identity="named", full_document=True)
+build("pieza_site_anon.html", inline_video=False, identity="anon", full_document=True)
+
+print(f"Recorda subir tambien la carpeta {MEDIA}/ junto con pieza_site.html / pieza_site_anon.html.")
