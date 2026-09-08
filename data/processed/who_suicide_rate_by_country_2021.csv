@@ -1,0 +1,186 @@
+iso2,Location,FactValueNumeric
+ae,United Arab Emirates,1.7
+af,Afghanistan,5.32
+ag,Antigua and Barbuda,1.41
+al,Albania,2.13
+am,Armenia,1.93
+ao,Angola,14.58
+ar,Argentina,7.66
+at,Austria,10.15
+au,Australia,11.74
+az,Azerbaijan,1.56
+ba,Bosnia and Herzegovina,5.67
+bb,Barbados,2.84
+bd,Bangladesh,2.89
+be,Belgium,14.3
+bf,Burkina Faso,15.38
+bg,Bulgaria,6.25
+bh,Bahrain,4.22
+bi,Burundi,14.77
+bj,Benin,11.82
+bn,Brunei Darussalam,2.8
+bo,Bolivia (Plurinational State of),5.12
+br,Brazil,6.95
+bs,Bahamas,2.92
+bt,Bhutan,5.09
+bw,Botswana,10.39
+by,Belarus,11.68
+bz,Belize,4.62
+ca,Canada,8.09
+cd,Democratic Republic of the Congo,15.79
+cf,Central African Republic,18.7
+cg,Congo,11.22
+ch,Switzerland,9.87
+ci,Cote d'Ivoire,12.67
+cl,Chile,6.83
+cm,Cameroon,13.83
+cn,China,6.83
+co,Colombia,4.71
+cr,Costa Rica,7.56
+cu,Cuba,9.22
+cv,Cabo Verde,16.63
+cy,Cyprus,2.67
+cz,Czechia,10.32
+de,Germany,8.18
+dj,Djibouti,10.13
+dk,Denmark,7.63
+do,Dominican Republic,4.35
+dz,Algeria,2.32
+ec,Ecuador,7.42
+ee,Estonia,12.46
+eg,Egypt,0.73
+er,Eritrea,20.16
+es,Spain,6.21
+et,Ethiopia,10.68
+fi,Finland,12.59
+fj,Fiji,8.52
+fm,Micronesia (Federated States of),20.83
+fr,France,11.78
+ga,Gabon,10.49
+gb,United Kingdom of Great Britain and Northern Ireland,8.77
+gd,Grenada,1.17
+ge,Georgia,4.55
+gh,Ghana,8.08
+gm,Gambia,8.29
+gn,Guinea,8.2
+gq,Equatorial Guinea,10.51
+gr,Greece,3.39
+gt,Guatemala,5.27
+gw,Guinea-Bissau,12.17
+gy,Guyana,26.3
+hn,Honduras,3.7
+hr,Croatia,10.58
+ht,Haiti,9.27
+hu,Hungary,11.42
+id,Indonesia,1.28
+ie,Ireland,7.68
+il,Israel,4.39
+in,India,12.62
+iq,Iraq,3.82
+ir,Iran (Islamic Republic of),4.08
+is,Iceland,10.84
+it,Italy,4.64
+jm,Jamaica,1.65
+jo,Jordan,0.67
+jp,Japan,14.74
+ke,Kenya,8.92
+kg,Kyrgyzstan,7.79
+kh,Cambodia,5.0
+ki,Kiribati,18.69
+km,Comoros,8.86
+kp,Democratic People's Republic of Korea,7.61
+kr,Republic of Korea,20.58
+kw,Kuwait,2.16
+kz,Kazakhstan,15.19
+la,Lao People's Democratic Republic,4.99
+lb,Lebanon,0.7
+lc,Saint Lucia,4.73
+lk,Sri Lanka,14.03
+lr,Liberia,9.65
+ls,Lesotho,36.7
+lt,Lithuania,16.76
+lu,Luxembourg,6.22
+lv,Latvia,11.95
+ly,Libya,5.1
+ma,Morocco,2.96
+md,Republic of Moldova,11.95
+me,Montenegro,8.94
+mg,Madagascar,10.04
+mk,North Macedonia,4.59
+ml,Mali,8.33
+mm,Myanmar,2.9
+mn,Mongolia,19.79
+mr,Mauritania,4.86
+mt,Malta,5.56
+mu,Mauritius,9.56
+mv,Maldives,1.96
+mw,Malawi,14.22
+mx,Mexico,6.86
+my,Malaysia,5.64
+mz,Mozambique,18.96
+na,Namibia,11.06
+ne,Niger,8.86
+ng,Nigeria,8.84
+ni,Nicaragua,4.19
+nl,Netherlands (Kingdom of the),9.14
+no,Norway,11.42
+np,Nepal,11.1
+nz,New Zealand,11.09
+om,Oman,0.93
+pa,Panama,3.27
+pe,Peru,1.53
+pg,Papua New Guinea,2.14
+ph,Philippines,4.04
+pk,Pakistan,6.5
+pl,Poland,11.51
+pr,Puerto Rico,3.97
+ps,"occupied Palestinian territory, including east Jerusalem",0.8
+pt,Portugal,7.22
+py,Paraguay,6.53
+qa,Qatar,4.21
+ro,Romania,7.21
+rs,Serbia,9.37
+ru,Russian Federation,17.9
+rw,Rwanda,13.65
+sa,Saudi Arabia,1.64
+sb,Solomon Islands,22.48
+sc,Seychelles,3.9
+sd,Sudan,3.87
+se,Sweden,11.74
+sg,Singapore,6.98
+si,Slovenia,13.2
+sk,Slovakia,7.59
+sl,Sierra Leone,9.7
+sn,Senegal,11.56
+so,Somalia,15.32
+sr,Suriname,22.48
+ss,South Sudan,13.41
+st,Sao Tome and Principe,1.25
+sv,El Salvador,7.82
+sy,Syrian Arab Republic,0.66
+sz,Eswatini,31.77
+td,Chad,10.68
+tg,Togo,15.17
+th,Thailand,15.38
+tj,Tajikistan,3.06
+tl,Timor-Leste,4.15
+tm,Turkmenistan,7.49
+tn,Tunisia,1.84
+to,Tonga,5.37
+tr,Türkiye,2.58
+tt,Trinidad and Tobago,11.65
+tz,United Republic of Tanzania,9.05
+ua,Ukraine,16.97
+ug,Uganda,11.6
+us,United States of America,14.22
+uy,Uruguay,22.04
+uz,Uzbekistan,9.05
+vc,Saint Vincent and the Grenadines,0.29
+ve,Venezuela (Bolivarian Republic of),8.95
+vn,Viet Nam,7.05
+vu,Vanuatu,18.19
+ws,Samoa,14.26
+ye,Yemen,5.22
+za,South Africa,21.11
+zm,Zambia,13.25
+zw,Zimbabwe,25.42

@@ -1,0 +1,10 @@
+.DS_Store
+.venv/
+__pycache__/
+*.pyc
+
+# Datasets crudos y limpios: pesados, no hace falta versionarlos.
+# Los datos que efectivamente usa la pieza publicada ya estan procesados
+# y volcados en output/ (pieza_visual.html / pieza_site.html + docs/).
+data/raw/
+data/clean/
