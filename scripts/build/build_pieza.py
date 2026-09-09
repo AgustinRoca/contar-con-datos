@@ -61,6 +61,7 @@ html = html.replace(
 
 WA_VIDEO = MEDIA / "whatsapp_video_cierre.mp4"
 WA_POSTER = MEDIA / "whatsapp_video_cierre_poster.jpg"
+FAVICON = OUT / "img" / "ribbon.png"
 
 REPO_URL = "https://github.com/AgustinRoca/contar-con-datos"
 IDENTITIES = {
@@ -95,17 +96,31 @@ def with_identity(doc: str, *, identity: str) -> str:
     return doc.replace("__AUTHOR__", ident["author"]).replace("__REPO_LINE__", ident["repo_line"])
 
 
+def with_favicon(doc: str) -> str:
+    favicon_b64 = base64.b64encode(FAVICON.read_bytes()).decode("ascii")
+    return doc.replace("__FAVICON_SRC__", f"data:image/png;base64,{favicon_b64}")
+
+
 def as_full_document(body_doc: str) -> str:
+    # El <title> y el <link rel="icon"> de la plantilla van pegados uno al
+    # otro arriba de todo; los dos se mueven al <head> del documento final,
+    # el resto queda en el <body>.
     title_start = body_doc.find("<title>")
-    title_end = body_doc.find("</title>") + len("</title>")
-    title_tag = body_doc[title_start:title_end] if title_start != -1 else "<title>Contar con datos</title>"
-    body_html = body_doc[:title_start] + body_doc[title_end:] if title_start != -1 else body_doc
+    if title_start == -1:
+        head_extra = "<title>Contar con datos</title>"
+        body_html = body_doc
+    else:
+        after_title = body_doc.find("</title>", title_start) + len("</title>")
+        icon_start = body_doc.find('<link rel="icon"', after_title)
+        head_end = body_doc.find(">", icon_start) + 1 if 0 <= icon_start - after_title < 5 else after_title
+        head_extra = body_doc[title_start:head_end]
+        body_html = body_doc[:title_start] + body_doc[head_end:]
     return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{title_tag}
+{head_extra}
 </head>
 <body>
 {body_html}
@@ -115,7 +130,7 @@ def as_full_document(body_doc: str) -> str:
 
 
 def build(name: str, *, inline_video: bool, identity: str, full_document: bool) -> None:
-    doc = with_identity(with_video_refs(html, inline=inline_video), identity=identity)
+    doc = with_favicon(with_identity(with_video_refs(html, inline=inline_video), identity=identity))
     if full_document:
         doc = as_full_document(doc)
     path = OUT / name
@@ -123,7 +138,9 @@ def build(name: str, *, inline_video: bool, identity: str, full_document: bool) 
     print(f"Generado {path} ({len(doc):,} caracteres)".replace(",", "."))
 
 
-build("pieza_visual.html", inline_video=True, identity="named", full_document=False)
+# pieza_visual.html (para el Artifact) ya no se usa; descomentar si hiciera
+# falta de nuevo.
+# build("pieza_visual.html", inline_video=True, identity="named", full_document=False)
 build("pieza_site.html", inline_video=False, identity="named", full_document=True)
 build("pieza_site_anon.html", inline_video=False, identity="anon", full_document=True)
 
