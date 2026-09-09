@@ -194,10 +194,17 @@
   .art-placeholder{ border:1.5px dashed var(--panel-line); border-radius:6px; padding:28px 24px; margin:1.4em 0; color:var(--muted); font-size:.92rem; text-align:center; }
   .art-placeholder .tag{ font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-warm); display:block; margin-bottom:.6em; }
 
-  .quote-block{ border-left:3px solid var(--accent-cool); border-radius:2px; padding:.2em 0 .2em 24px; margin:1.4em 0; }
-  .quote-block p{ font-family:var(--serif); font-style:italic; font-size:1.3rem; line-height:1.4; margin:0; }
-  .quote-block cite{ display:block; margin-top:.5em; font-style:normal; font-size:.85rem; color:var(--muted); }
+  .quote-block{ position:relative; text-align:center; margin:2em auto; padding:56px 32px 40px; max-width:620px; background:var(--panel); border-radius:14px; }
+  .quote-block::before{
+    content:"\201C"; position:absolute; top:6px; left:50%; transform:translateX(-50%);
+    font-family:var(--serif); font-size:4.6rem; line-height:1; font-weight:680;
+    background:linear-gradient(135deg, var(--accent-cool), var(--accent-warm));
+    -webkit-background-clip:text; background-clip:text; color:transparent; opacity:.85;
+  }
+  .quote-block p{ font-family:var(--serif); font-style:normal; font-weight:560; font-size:1.5rem; line-height:1.45; margin:.3em 0 0; color:var(--ink); text-wrap:balance; }
+  .quote-block cite{ display:block; margin-top:1.1em; font-style:normal; font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-warm); }
   .quote-block cite::before{ content:"— "; }
+  .quote-block cite i{ font-style:italic; }
 
   .video-embed{ margin:1.4em 0; }
   .video-embed-frame{ position:relative; width:100%; padding-top:56.25%; border-radius:6px; overflow:hidden; background:var(--panel); }
