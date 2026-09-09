@@ -145,7 +145,7 @@
   .bar:hover{ opacity:.75; }
   [data-tooltip]{ cursor:default; }
 
-  #tooltip{ position:fixed; pointer-events:none; background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:.76rem; line-height:1.45; padding:7px 11px; border-radius:4px; max-width:260px; z-index:1000; opacity:0; transition:opacity .1s ease; }
+  #tooltip{ position:fixed; pointer-events:none; background:var(--ink); color:var(--paper); font-family:var(--mono); font-size:.76rem; line-height:1.45; padding:7px 11px; border-radius:4px; max-width:260px; z-index:1000; opacity:0; transition:opacity .1s ease; white-space:pre-line; }
   #tooltip.shown{ opacity:1; }
   .bar-grow{ transform-box:fill-box; transform-origin:bottom; transform:scaleY(0); transition:transform .85s cubic-bezier(.16,.84,.44,1); }
   .bar-grow.grown{ transform:scaleY(1); }
