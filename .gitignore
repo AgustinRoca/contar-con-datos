@@ -8,9 +8,10 @@ __pycache__/
 data/clean/
 
 # data/raw/: se versionan los archivos de las fuentes que la pieza realmente
-# usa (SAT, DEIS, EMSE, ENFR 2018, OMS, Censo); todo lo demas (datasets
-# explorados pero no usados en la pieza final: encoprac, sedronar, msal_snvs,
-# eph, ipc) queda afuera del repo.
+# usa (SAT, DEIS, EMSE, ENFR 2018, OMS, Censo, mapa mundial), datos y
+# diccionarios/manuales por igual; todo lo demas (datasets explorados pero no
+# usados en la pieza final: encoprac, sedronar, msal_snvs, eph, ipc) queda
+# afuera del repo.
 data/raw/*
 !data/raw/SAT-SS-BU_2017-2024.csv
 !data/raw/datos_sobre_defunciones_2024.csv
@@ -23,15 +24,24 @@ data/raw/deis/*
 !data/raw/deis/defweb21_0.csv
 !data/raw/deis/defweb22_0.csv
 !data/raw/deis/defweb23.csv
+!data/raw/deis/descdef1.xlsx
 !data/raw/emse/
 data/raw/emse/*
 !data/raw/emse/emse_datosabiertos.zip
+!data/raw/emse/cuestionario_emse2018.pdf
+!data/raw/emse/libro_codigos_emse2018.xlsx
+!data/raw/emse/metodologia_emse2018.pdf
 !data/raw/enfr/
 data/raw/enfr/*
 !data/raw/enfr/2018/
 !data/raw/enfr/2018/ENFR 2018 - Base usuario.txt
+!data/raw/enfr/diccionario_registros_enfr2018.xls
+!data/raw/enfr/manual_base_usuario_enfr2018.pdf
 !data/raw/who_suicide_rates/
 data/raw/who_suicide_rates/*
 !data/raw/who_suicide_rates/data.csv
+!data/raw/world_map/
+data/raw/world_map/*
+!data/raw/world_map/world-map.svg
 !data/raw/poblacion_censo2022_por_provincia.csv
 output/pieza_site_anon.html
