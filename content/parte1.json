@@ -4,16 +4,16 @@
   "chart_anio_caption": "SAT y DEIS. Son dos registros independientes, con distinta metodología de certificación.",
   "world_heading": "¿Y comparado con el resto del mundo?",
   "world_intro": "Para eliminar sesgos causados por la distribución etaria de los distintos países, se utiliza una tasa ajustada por edad, que permite una comparación más justa entre las diferentes poblaciones. El mapa a continuación muestra la tasa de suicidio ajustada por edad de cada país.",
-  "world_map_caption": "OMS, 2021. Contornos: <a href=\"https://github.com/flekschas/simple-world-map\" target=\"_blank\" rel=\"noopener\">Simple World Map</a> de Al MacDonald y Fritz Lekschas (CC BY-SA 3.0).",
-  "globe_label_1": "personas mueren por suicidio cada día en el mundo<br>(IHME, Global Burden of Disease, 2023)",
-  "globe_label_2": "de ellas, en promedio, eran argentinas<br>(SAT, 2023: 4.205 casos)",
-  "trend_comparison": "Las tendencias van en direcciones opuestas: entre 2021 y 2023 los casos en Argentina subieron un <strong>15%</strong>, mientras que a nivel mundial la tasa de suicidio viene bajando de forma sostenida desde 1990 (<a href=\"https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(25)00006-4/fulltext\" target=\"_blank\" rel=\"noopener\">Naghavi et al., <em>The Lancet Public Health</em>, 2025, estudio Global Burden of Disease 2021</a>).",
+  "world_map_caption": "OMS, 2021. Contornos: [Simple World Map](https://github.com/flekschas/simple-world-map) de Al MacDonald y Fritz Lekschas (CC BY-SA 3.0).",
+  "globe_label_1": "personas mueren por suicidio cada día en el mundo\n(IHME, Global Burden of Disease, 2023)",
+  "globe_label_2": "de ellas, en promedio, eran argentinas\n(SAT, 2023: 4.205 casos)",
+  "trend_comparison": "Las tendencias van en direcciones opuestas: entre 2021 y 2023 los casos en Argentina subieron un **15%**, mientras que a nivel mundial la tasa de suicidio viene bajando de forma sostenida desde 1990 ([Naghavi et al., *The Lancet Public Health*, 2025, estudio Global Burden of Disease 2021](https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(25)00006-4/fulltext)).",
   "deis_aside_title": "El número real podría ser mayor",
   "deis_aside_p1": "Cuando se aíslan los suicidios dentro de los microdatos de mortalidad general del DEIS (Ministerio de Salud, otra fuente independiente), aparece una categoría de defunciones por \"intención no determinada\": casos donde no se pudo certificar si la muerte fue intencional, accidental o una agresión.",
-  "deis_aside_p2": "La categoría de intención no determinada del DEIS es <strong>más grande que el propio suicidio confirmado</strong> por esa misma fuente. No se puede afirmar que todos esos casos sean suicidios no certificados, pero es una señal fuerte de que el número oficial es un piso, no un techo.",
+  "deis_aside_p2": "La categoría de intención no determinada del DEIS es **más grande que el propio suicidio confirmado** por esa misma fuente. No se puede afirmar que todos esos casos sean suicidios no certificados, pero es una señal fuerte de que el número oficial es un piso, no un techo.",
   "quiz_anxiety_question": "En relación a la ansiedad/depresión, ¿en el día de hoy está usted ansioso/a o deprimido/a?",
   "quiz_privacy": "Tu respuesta no se guarda ni se envía a ningún lado. Es solo para vos.",
   "quiz_reveal": "Ver quiénes contestaron \"Sí\" en 2018 →",
-  "quiz_result_intro": "En la Encuesta Nacional de Factores de Riesgo 2018 (INDEC), el <strong>18,4%</strong> de las personas encuestadas dijo tener ansiedad o depresión moderada o alta ese mismo día. Así se distribuyó esa respuesta según el ingreso del hogar:",
-  "chart_ansiedad_caption": "ENFR, INDEC, edición 2018.<br>$ = el 20% de los hogares con menos ingresos<br>$$$$$ = el 20% de los hogares con más ingresos."
+  "quiz_result_intro": "En la Encuesta Nacional de Factores de Riesgo 2018 (INDEC), el **18,4%** de las personas encuestadas dijo tener ansiedad o depresión moderada o alta ese mismo día. Así se distribuyó esa respuesta según el ingreso del hogar:",
+  "chart_ansiedad_caption": "ENFR, INDEC, edición 2018.\n$ = el 20% de los hogares con menos ingresos\n$$$$$ = el 20% de los hogares con más ingresos."
 }

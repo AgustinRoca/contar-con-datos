@@ -98,8 +98,27 @@ template = _SVG_TOKEN.sub(_inject_svgs, template)
 # seccion de la pieza, y se inyecta donde el template marca {{TXT:archivo.clave}}.
 # Un valor que es una lista (por ahora, solo footer.sources) se renderiza como
 # una lista de <li> uno por elemento.
+#
+# El contenido de content/*.json no tiene tags HTML: usa una sintaxis
+# markdown-lite (**negrita**, *cursiva*, [texto](url), salto de linea real
+# para <br>) que _render_markdown() convierte a HTML aca, en el build. Asi
+# los JSON quedan como texto plano, sin markup mezclado con el contenido.
 _TXT_TOKEN = re.compile(r"\{\{TXT:([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)\}\}")
 _content_cache: dict[str, dict] = {}
+
+_MD_BOLD = re.compile(r"\*\*(.+?)\*\*")
+_MD_ITALIC = re.compile(r"\*(.+?)\*")
+# El grupo de la URL admite un nivel de parentesis balanceados adentro (hay
+# URLs reales, como la de la OMS o la del Lancet, que traen un "(...)" en el
+# medio), para no cortar el link en el primer ")" que aparece.
+_MD_LINK = re.compile(r"\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)")
+
+
+def _render_markdown(text: str) -> str:
+    text = _MD_BOLD.sub(r"<strong>\1</strong>", text)
+    text = _MD_ITALIC.sub(r"<em>\1</em>", text)
+    text = _MD_LINK.sub(r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>', text)
+    return text.replace("\n", "<br>")
 
 
 def _content_for(fname: str) -> dict:
@@ -118,8 +137,8 @@ def _inject_text(match: "re.Match[str]") -> str:
         raise SystemExit(f"content/{fname}.json no tiene la clave '{key}' (referenciada como {{{{TXT:{fname}.{key}}}}}).")
     value = content[key]
     if isinstance(value, list):
-        return "\n".join(f"      <li>{item}</li>" for item in value)
-    return value
+        return "\n".join(f"      <li>{_render_markdown(item)}</li>" for item in value)
+    return _render_markdown(value)
 
 
 template = _TXT_TOKEN.sub(_inject_text, template)
