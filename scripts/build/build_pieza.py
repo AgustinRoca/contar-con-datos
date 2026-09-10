@@ -100,13 +100,18 @@ template = _SVG_TOKEN.sub(_inject_svgs, template)
 # una lista de <li> uno por elemento.
 #
 # El contenido de content/*.json no tiene tags HTML: usa una sintaxis
-# markdown-lite (**negrita**, *cursiva*, [texto](url), salto de linea real
-# para <br>) que _render_markdown() convierte a HTML aca, en el build. Asi
-# los JSON quedan como texto plano, sin markup mezclado con el contenido.
+# markdown-lite que _render_markdown() convierte a HTML aca, en el build, para
+# que los JSON queden como texto plano sin markup mezclado con el contenido:
+#   **texto**   -> <strong>
+#   *texto*     -> <em>
+#   `texto`     -> <span class="accent"> (resalta una frase en el color del titulo)
+#   [texto](url)-> <a target="_blank" rel="noopener noreferrer">
+#   salto de linea real -> <br>
 _TXT_TOKEN = re.compile(r"\{\{TXT:([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)\}\}")
 _content_cache: dict[str, dict] = {}
 
 _MD_BOLD = re.compile(r"\*\*(.+?)\*\*")
+_MD_ACCENT = re.compile(r"`(.+?)`")
 _MD_ITALIC = re.compile(r"\*(.+?)\*")
 # El grupo de la URL admite un nivel de parentesis balanceados adentro (hay
 # URLs reales, como la de la OMS o la del Lancet, que traen un "(...)" en el
@@ -116,6 +121,7 @@ _MD_LINK = re.compile(r"\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)")
 
 def _render_markdown(text: str) -> str:
     text = _MD_BOLD.sub(r"<strong>\1</strong>", text)
+    text = _MD_ACCENT.sub(r'<span class="accent">\1</span>', text)
     text = _MD_ITALIC.sub(r"<em>\1</em>", text)
     text = _MD_LINK.sub(r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>', text)
     return text.replace("\n", "<br>")

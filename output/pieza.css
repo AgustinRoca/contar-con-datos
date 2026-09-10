@@ -62,6 +62,9 @@
   .ribbon-badge{ position:absolute; top:18px; right:24px; width:38px; height:auto; }
   @media (max-width:640px){ .ribbon-badge{ top:14px; right:16px; width:30px; } }
   .lede{ font-size:1.2rem; color:var(--ink-soft); margin-top:1em; }
+  .accent{ color:var(--accent-warm); }
+  .hero-source{ font-size:.85rem; color:var(--muted); margin-top:-.4em; }
+  .hero-source a{ color:var(--muted); }
 
   .helpline{ margin-top:1.8em; padding:14px 18px; border:1px solid var(--line); border-radius:3px; background:var(--panel); font-size:.92rem; color:var(--ink-soft); }
   .helpline strong{ color:var(--ink); font-weight:600; }
