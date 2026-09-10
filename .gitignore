@@ -7,8 +7,8 @@ __pycache__/
 # no hace falta versionarlo.
 data/clean/
 
-# data/raw/: se versionan los CSVs de las fuentes que la pieza realmente usa
-# (SAT, DEIS, EMSE, OMS, Censo); todo lo demas (ENFR en .rar/.txt, y datasets
+# data/raw/: se versionan los archivos de las fuentes que la pieza realmente
+# usa (SAT, DEIS, EMSE, ENFR 2018, OMS, Censo); todo lo demas (datasets
 # explorados pero no usados en la pieza final: encoprac, sedronar, msal_snvs,
 # eph, ipc) queda afuera del repo.
 data/raw/*
@@ -26,6 +26,10 @@ data/raw/deis/*
 !data/raw/emse/
 data/raw/emse/*
 !data/raw/emse/emse_datosabiertos.zip
+!data/raw/enfr/
+data/raw/enfr/*
+!data/raw/enfr/2018/
+!data/raw/enfr/2018/ENFR 2018 - Base usuario.txt
 !data/raw/who_suicide_rates/
 data/raw/who_suicide_rates/*
 !data/raw/who_suicide_rates/data.csv
