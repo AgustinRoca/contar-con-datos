@@ -1,9 +1,15 @@
 """
 Visualizaciones EXPLORATORIAS del DEIS (data/clean/deis/), sin pulir.
-Recortado solo a suicidio (CIE-10 X60-X84) -- no se muestra nada de mortalidad
-general ni de otras causas.
 
-Salida: output/exploracion/deis/exploracion_deis.png
+Salida:
+  output/exploracion/deis/exploracion_deis.png (recortado solo a suicidio,
+    CIE-10 X60-X84: por año, por sexo, por provincia normalizado por
+    población, por franja etaria fina)
+  output/exploracion/deis/exploracion_deis_suicidio_vs_total.png (suicidio
+    comparado contra el total de defunciones, agrupadas por capítulo CIE-10)
+  output/exploracion/deis/exploracion_deis_causas_externas.png (suicidio
+    comparado unicamente contra el resto de las causas externas, V01-Y98,
+    el capítulo al que pertenece formalmente)
 """
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -23,10 +29,6 @@ df["CUENTA"] = pd.to_numeric(df["CUENTA"], errors="coerce")
 SUIC = {f"X{n}" for n in range(60, 85)}
 suic = df[df["CAUSA"].isin(SUIC)]
 
-CAUSA_DESC = pd.read_excel("data/raw/deis/descdef1.xlsx", sheet_name="CODMUER")
-causa_map = dict(zip(CAUSA_DESC["CODIGO"], CAUSA_DESC["VALOR"]))
-causa_map["U07"] = "COVID-19 (sin descripción en el diccionario oficial)"
-
 PROV = {
     "02": "CABA", "06": "Buenos Aires", "10": "Catamarca", "14": "Córdoba",
     "18": "Corrientes", "22": "Chaco", "26": "Chubut", "30": "Entre Ríos",
@@ -37,16 +39,17 @@ PROV = {
     "94": "Tierra del Fuego", "98": "Otro país",
 }
 
+# === 1) suicidio: por año, sexo, provincia (normalizado), franja etaria ===
 fig, axes = plt.subplots(2, 2, figsize=(13, 10))
 fig.suptitle("DEIS 2017-2024 — suicidios (CIE-10 X60-X84), exploración rápida (sin pulir)", fontsize=13)
 
-# 1) Suicidios por año
+# 1.1) Suicidios por año
 ax = axes[0, 0]
 suic.groupby("anio")["CUENTA"].sum().plot(kind="bar", ax=ax, color="#c44e52")
 ax.set_title("Suicidios por año")
 ax.set_xlabel("")
 
-# 2) Suicidios por sexo
+# 1.2) Suicidios por sexo
 ax = axes[0, 1]
 sexo_map = {"1": "Varón", "2": "Mujer", "9": "Sin especificar", "3": "Cód. 3 (sin doc.)"}
 tabla_sexo = suic.groupby("SEXO")["CUENTA"].sum().rename(index=sexo_map)
@@ -55,7 +58,7 @@ ax.set_title("Suicidios por sexo")
 ax.set_xlabel("")
 ax.tick_params(axis="x", rotation=20)
 
-# 3) Suicidios por provincia normalizados por población
+# 1.3) Suicidios por provincia normalizados por población
 ax = axes[1, 0]
 pob = pd.read_csv("data/raw/poblacion_censo2022_por_provincia.csv")
 suic_prov = suic[~suic["PROVRES"].isin(["98", "99"])].copy()
@@ -68,7 +71,7 @@ ax.barh(tabla["provincia"], tabla["tasa_anual_100k"], color="#937860")
 ax.set_title("Tasa de suicidio cada 100.000 hab./año, por provincia")
 ax.tick_params(axis="y", labelsize=7)
 
-# 4) Suicidios por franja etaria fina, solo 2017-2023 (esquema estable de 18 categorías)
+# 1.4) Suicidios por franja etaria fina, solo 2017-2023 (esquema estable de 18 categorías)
 ax = axes[1, 1]
 suic_edad_estable = suic[suic["anio"] != 2024]
 tabla_edad = suic_edad_estable.groupby("GRUPEDAD")["CUENTA"].sum().sort_index()
@@ -81,11 +84,16 @@ plt.tight_layout()
 plt.savefig("output/exploracion/deis/exploracion_deis.png", dpi=130)
 print("Guardado en output/exploracion/deis/exploracion_deis.png")
 
-# --- Figura aparte: suicidio comparado contra el total de muertes, agrupando TODAS
-#     las causas por capítulo CIE-10 (no una selección ad-hoc de categorías). El
-#     único capítulo que se desarma es el XX (causas externas, V01-Y98): ahí se
-#     separa "Suicidio" (X60-X84) del resto de las causas externas (accidentes,
-#     homicidios, etc.), porque es justamente lo que se quiere destacar.
+# === 2) suicidio contra el total de muertes, por capítulo CIE-10 ===
+# Se agrupan TODAS las causas por capítulo CIE-10 (no una selección ad-hoc de
+# categorías). El único capítulo que se desarma es el XX (causas externas,
+# V01-Y98): ahí se separa "Suicidio" (X60-X84) del resto de las causas
+# externas (accidentes, homicidios, etc.), porque es justamente lo que se
+# quiere destacar.
+CAUSA_DESC = pd.read_excel("data/raw/deis/descdef1.xlsx", sheet_name="CODMUER")
+causa_map = dict(zip(CAUSA_DESC["CODIGO"], CAUSA_DESC["VALOR"]))
+causa_map["U07"] = "COVID-19 (sin descripción en el diccionario oficial)"
+
 total_muertes = df["CUENTA"].sum()
 total_suicidios = suic["CUENTA"].sum()
 pct_suicidio = total_suicidios / total_muertes * 100
@@ -161,3 +169,48 @@ print("Guardado en output/exploracion/deis/exploracion_deis_suicidio_vs_total.pn
 print(por_capitulo.to_string())
 print(f"\nSuicidio: {total_suicidios:,.0f} de {total_muertes:,.0f} ({pct_suicidio:.2f}%), "
       f"puesto {puesto_suicidio}° de {len(por_capitulo)} capítulos CIE-10.".replace(",", "."))
+
+# === 3) suicidio unicamente contra el resto de las causas externas (V01-Y98) ===
+def subgrupo_causa_externa(causa: str) -> str | None:
+    letra, numero = causa[0], int(causa[1:])
+    if letra == "X" and 60 <= numero <= 84:
+        return "SUICIDIO (X60-X84)"
+    if letra == "V":
+        return "Accidentes de tránsito (V)"
+    if letra == "W":
+        return "Otros accidentes: caídas, ahogamiento, etc. (W)"
+    if letra == "X" and numero <= 59:
+        return "Otros accidentes: envenenamiento, fuego, etc. (X00-X59)"
+    if (letra == "X" and numero >= 85) or (letra == "Y" and numero <= 9):
+        return "Agresiones / homicidios (X85-Y09)"
+    if letra == "Y" and 10 <= numero <= 34:
+        return "Intención no determinada (Y10-Y34)"
+    if letra == "Y" and numero >= 35:
+        return "Otras causas externas (Y35-Y98)"
+    return None  # no es capítulo de causas externas
+
+
+df["subgrupo_externa"] = df["CAUSA"].map(subgrupo_causa_externa)
+externas = df.dropna(subset=["subgrupo_externa"])
+
+tabla_ext = externas.groupby("subgrupo_externa")["CUENTA"].sum().sort_values()
+total_externas = tabla_ext.sum()
+pct_suicidio_externas = tabla_ext["SUICIDIO (X60-X84)"] / total_externas * 100
+
+colores_ext = ["#c44e52" if s == "SUICIDIO (X60-X84)" else "#4c72b0" for s in tabla_ext.index]
+
+fig3, ax3 = plt.subplots(figsize=(10, 5.5))
+ax3.barh(tabla_ext.index, tabla_ext.values, color=colores_ext)
+for i, (etiqueta, valor) in enumerate(tabla_ext.items()):
+    ax3.text(valor + total_externas * 0.01, i, f"{valor:,.0f}".replace(",", "."),
+              va="center", fontsize=8)
+ax3.set_title(
+    f"Suicidio dentro del capítulo de causas externas (V01-Y98), 2017-2024\n"
+    f"Total causas externas: {total_externas:,.0f} · Suicidio: {pct_suicidio_externas:.1f}% de ese total"
+    .replace(",", ".")
+)
+plt.tight_layout()
+plt.savefig("output/exploracion/deis/exploracion_deis_causas_externas.png", dpi=130)
+print("\nGuardado en output/exploracion/deis/exploracion_deis_causas_externas.png")
+print(tabla_ext.sort_values(ascending=False).to_string())
+print(f"\nSuicidio = {pct_suicidio_externas:.1f}% de todas las causas externas de muerte.")
