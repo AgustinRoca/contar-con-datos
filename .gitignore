@@ -45,3 +45,7 @@ data/raw/world_map/*
 !data/raw/world_map/world-map.svg
 !data/raw/poblacion_censo2022_por_provincia.csv
 output/pieza_site_anon.html
+
+# output/exploracion/: reproducible corriendo scripts/explore/*.py sobre
+# data/clean/, no hace falta versionarlo.
+output/exploracion/
