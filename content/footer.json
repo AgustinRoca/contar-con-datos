@@ -1,0 +1,14 @@
+{
+  "note": "Todas las cifras fueron recalculadas de forma independiente a partir de los microdatos crudos, no tomadas de informes agregados de terceros, salvo donde se indica lo contrario.",
+  "sources": [
+    "<b>SAT: Sistema de Alerta Temprana de Suicidios</b> (Ministerio de Seguridad de la Nación). Microdato individual, 30.177 casos, 2017-2024. <a href=\"https://datos.gob.ar/dataset/suicidios-sistema-de-alerta-temprana-estadisticas-criminales-en-la-republica-argentina\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>DEIS: Dirección de Estadísticas e Información de Salud</b> (Ministerio de Salud). Microdatos de mortalidad por causa CIE-10, 2017-2024. <a href=\"https://www.argentina.gob.ar/salud/deis/datos/defunciones\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>ENFR: Encuesta Nacional de Factores de Riesgo</b> (INDEC). Microdato, ediciones 2005, 2009, 2013 y 2018. <a href=\"https://www.indec.gob.ar/indec/web/Nivel4-Tema-4-32-68\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>EMSE: Encuesta Mundial de Salud Escolar 2018</b> (Ministerio de Salud). Microdato, 56.981 estudiantes secundarios. <a href=\"https://datos.gob.ar/dataset/base-de-datos-de-la-3-encuesta-mundial-de-salud-escolar-emse-con-resultados-nacionales-argentin\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>Censo Nacional 2022</b> (INDEC). Población por provincia. <a href=\"https://censo.gob.ar/\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>IHME: Global Burden of Disease Study</b>, actualización 2023 (Institute for Health Metrics and Evaluation). Muertes por suicidio a nivel mundial, 2023. <a href=\"https://www.healthdata.org/research-analysis/health-topics/suicide-self-harm\" target=\"_blank\" rel=\"noopener\">Ver fuente</a>",
+    "<b>OMS: Age-standardized suicide rates (per 100 000 population)</b> (Global Health Observatory). Tasa por país, ambos sexos, 2021. Usada para el mapa mundial. <a href=\"https://www.who.int/data/gho/data/indicators/indicator-details/GHO/age-standardized-suicide-rates-(per-100-000-population)\" target=\"_blank\" rel=\"noopener\">Descargar datos crudos</a>",
+    "<b>Naghavi et al.</b>, \"Global, regional, and national burden of suicide, 1990-2021\", <i>The Lancet Public Health</i>, 2025 (estudio Global Burden of Disease 2021). Tendencia mundial de la tasa de suicidio desde 1990. <a href=\"https://www.thelancet.com/journals/lanpub/article/PIIS2468-2667(25)00006-4/fulltext\" target=\"_blank\" rel=\"noopener\">Ver fuente</a>",
+    "<b>Contornos del mapa mundial:</b> \"Simple World Map\" de Al MacDonald y Fritz Lekschas, licencia CC BY-SA 3.0. <a href=\"https://github.com/flekschas/simple-world-map\" target=\"_blank\" rel=\"noopener\">Ver repositorio</a>"
+  ]
+}

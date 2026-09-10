@@ -1,0 +1,14 @@
+{
+  "eyebrow": "III - Adolescentes",
+  "title": "Lo que dicen 56.981 estudiantes secundarios",
+  "intro": "La Encuesta Mundial de Salud Escolar 2018 (Ministerio de Salud) preguntó de forma anónima a estudiantes de todo el país sobre su salud, incluídas las siguientes preguntas:",
+  "q_ideacion": "Durante los últimos 12 meses, ¿alguna vez consideraste seriamente la posibilidad de intentar suicidarte?",
+  "q_plan": "Durante los últimos 12 meses ¿hiciste algún plan de cómo intentarías suicidarte?",
+  "q_intentos": "Durante los últimos 12 meses ¿cuántas veces intentaste realmente suicidarte?",
+  "q_soledad": "Durante los últimos 12 meses ¿con qué frecuencia te sentiste solo o sola?",
+  "quiz_privacy": "Tus respuestas no se guardan ni se envían a ningún lado. Son solo para vos.",
+  "quiz_reveal": "Ver cómo contestaron 56.981 estudiantes en 2018 →",
+  "stat_1_label": "pensó seriamente en suicidarse en el último año",
+  "stat_2_label": "hizo un plan concreto de cómo hacerlo",
+  "stat_3_label": "intentó suicidarse al menos una vez"
+}

@@ -1,0 +1,3 @@
+        <circle cx="260" cy="633" r="5" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
+        <line x1="265" y1="633" x2="305" y2="633" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="309" y="638" font-size="18" font-weight="600" fill="var(--ink)">Argentina: 7,7</text>

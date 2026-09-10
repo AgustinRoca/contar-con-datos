@@ -1,0 +1,41 @@
+      <svg viewBox="0 0 920 250" role="img" aria-label="Casos de suicidio por hora del dia, coloreado segun la luz de dia, Argentina 2017-2024">
+        <line class="fig-grid" x1="48" y1="206.0" x2="900" y2="206.0"/>
+        <text class="fig-axis" x="40" y="210.0" text-anchor="end">0</text>
+        <line class="fig-grid" x1="48" y1="128.2" x2="900" y2="128.2"/>
+        <text class="fig-axis" x="40" y="132.2" text-anchor="end">1.000</text>
+        <line class="fig-grid" x1="48" y1="50.4" x2="900" y2="50.4"/>
+        <text class="fig-axis" x="40" y="54.4" text-anchor="end">2.000</text>
+        <rect class="bar bar-grow" x="48.0" y="144.6" width="31.7" height="61.4" fill="#2a354a" data-tooltip="00:00, sin ser exactamente 00:00:00: 789 casos"/>
+        <rect class="bar bar-grow" x="48.0" y="99.6" width="31.7" height="45.0" fill="var(--accent-warm)" data-tooltip="Exactamente 00:00:00: 578 casos."/>
+        <text class="fig-axis" x="63.8" y="222.0" text-anchor="middle" font-size="9.5">00</text>
+        <rect class="bar bar-grow" x="83.7" y="150.7" width="31.7" height="55.3" fill="#2a354a" data-tooltip="01:00: 711"/>
+        <rect class="bar bar-grow" x="119.3" y="161.9" width="31.7" height="44.1" fill="#2a354a" data-tooltip="02:00: 567"/>
+        <rect class="bar bar-grow" x="155.0" y="167.3" width="31.7" height="38.7" fill="#2a354a" data-tooltip="03:00: 497"/>
+        <text class="fig-axis" x="170.8" y="222.0" text-anchor="middle" font-size="9.5">03</text>
+        <rect class="bar bar-grow" x="190.7" y="167.8" width="31.7" height="38.2" fill="#2a354a" data-tooltip="04:00: 491"/>
+        <rect class="bar bar-grow" x="226.3" y="161.7" width="31.7" height="44.3" fill="#2a354a" data-tooltip="05:00: 569"/>
+        <rect class="bar bar-grow" x="262.0" y="133.7" width="31.7" height="72.3" fill="#414853" data-tooltip="06:00: 929"/>
+        <text class="fig-axis" x="277.8" y="222.0" text-anchor="middle" font-size="9.5">06</text>
+        <rect class="bar bar-grow" x="297.7" y="108.3" width="31.7" height="97.7" fill="#6e6d65" data-tooltip="07:00: 1.255"/>
+        <rect class="bar bar-grow" x="333.3" y="88.9" width="31.7" height="117.1" fill="#979076" data-tooltip="08:00: 1.505"/>
+        <rect class="bar bar-grow" x="369.0" y="85.9" width="31.7" height="120.1" fill="#bbae85" data-tooltip="09:00: 1.544"/>
+        <text class="fig-axis" x="384.8" y="222.0" text-anchor="middle" font-size="9.5">09</text>
+        <rect class="bar bar-grow" x="404.7" y="80.2" width="31.7" height="125.8" fill="#d8c690" data-tooltip="10:00: 1.617"/>
+        <rect class="bar bar-grow" x="440.3" y="36.9" width="31.7" height="169.1" fill="#ebd698" data-tooltip="11:00: 2.173"/>
+        <rect class="bar bar-grow" x="476.0" y="70.2" width="31.7" height="135.8" fill="#f6df9c" data-tooltip="12:00: 1.745"/>
+        <text class="fig-axis" x="491.8" y="222.0" text-anchor="middle" font-size="9.5">12</text>
+        <rect class="bar bar-grow" x="511.7" y="90.0" width="31.7" height="116.0" fill="#f6df9c" data-tooltip="13:00: 1.491"/>
+        <rect class="bar bar-grow" x="547.3" y="96.6" width="31.7" height="109.4" fill="#ebd698" data-tooltip="14:00: 1.406"/>
+        <rect class="bar bar-grow" x="583.0" y="99.7" width="31.7" height="106.3" fill="#d8c690" data-tooltip="15:00: 1.366"/>
+        <text class="fig-axis" x="598.8" y="222.0" text-anchor="middle" font-size="9.5">15</text>
+        <rect class="bar bar-grow" x="618.7" y="96.8" width="31.7" height="109.2" fill="#bbae85" data-tooltip="16:00: 1.403"/>
+        <rect class="bar bar-grow" x="654.3" y="93.1" width="31.7" height="112.9" fill="#979076" data-tooltip="17:00: 1.451"/>
+        <rect class="bar bar-grow" x="690.0" y="86.6" width="31.7" height="119.4" fill="#6e6d65" data-tooltip="18:00: 1.534"/>
+        <text class="fig-axis" x="705.8" y="222.0" text-anchor="middle" font-size="9.5">18</text>
+        <rect class="bar bar-grow" x="725.7" y="88.3" width="31.7" height="117.7" fill="#414853" data-tooltip="19:00: 1.513"/>
+        <rect class="bar bar-grow" x="761.3" y="90.1" width="31.7" height="115.9" fill="#2a354a" data-tooltip="20:00: 1.489"/>
+        <rect class="bar bar-grow" x="797.0" y="100.1" width="31.7" height="105.9" fill="#2a354a" data-tooltip="21:00: 1.361"/>
+        <text class="fig-axis" x="812.8" y="222.0" text-anchor="middle" font-size="9.5">21</text>
+        <rect class="bar bar-grow" x="832.7" y="114.6" width="31.7" height="91.4" fill="#2a354a" data-tooltip="22:00: 1.175"/>
+        <rect class="bar bar-grow" x="868.3" y="126.8" width="31.7" height="79.2" fill="#2a354a" data-tooltip="23:00: 1.018"/>
+      </svg>

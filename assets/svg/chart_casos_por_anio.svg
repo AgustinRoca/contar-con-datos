@@ -1,0 +1,39 @@
+      <svg viewBox="0 0 740 300" role="img" aria-label="Casos de suicidio por año, Argentina 2017 a 2024, SAT y DEIS">
+        <line class="fig-grid" x1="50" y1="184.67" x2="670" y2="184.67"/>
+        <line class="fig-grid" x1="50" y1="121.33" x2="670" y2="121.33"/>
+        <line class="fig-grid" x1="50" y1="58.0" x2="670" y2="58.0"/>
+        <text class="fig-axis" x="42" y="188.67" text-anchor="end">3.000</text>
+        <text class="fig-axis" x="42" y="125.33" text-anchor="end">3.500</text>
+        <text class="fig-axis" x="42" y="62.0" text-anchor="end">4.000</text>
+
+        <path class="chart-line series-line" data-series="sat" d="M50.00,146.16 L138.57,70.29 L227.14,102.71 L315.71,151.48 L404.29,102.59 L492.86,63.19 L581.43,32.03 L670.00,26.46" fill="none" stroke="var(--accent-warm)" stroke-width="3"/>
+        <circle class="series-dot" data-series="sat" cx="50" cy="146.16" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2017: 3.304"/>
+        <circle class="series-dot" data-series="sat" cx="138.57" cy="70.29" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2018: 3.903"/>
+        <circle class="series-dot" data-series="sat" cx="227.14" cy="102.71" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2019: 3.647"/>
+        <circle class="series-dot" data-series="sat" cx="315.71" cy="151.48" r="5.5" fill="var(--accent-warn)" data-tooltip="SAT 2020: 3.262 (posiblemente subestimado debido al subregistro causado por la pandemia de COVID-19)"/>
+        <circle class="series-dot" data-series="sat" cx="404.29" cy="102.59" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2021: 3.648"/>
+        <circle class="series-dot" data-series="sat" cx="492.86" cy="63.19" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2022: 3.959"/>
+        <circle class="series-dot" data-series="sat" cx="581.43" cy="32.03" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2023: 4.205"/>
+        <circle class="series-dot" data-series="sat" cx="670" cy="26.46" r="4" fill="var(--accent-warm)" data-tooltip="SAT 2024: 4.249"/>
+        <text class="fig-value hi-warm series-dot" data-series="sat" x="670" y="17" text-anchor="end">4.249</text>
+
+        <path class="series-line" data-series="deis" data-hidden="1" d="M50.00,156.55 L138.57,143.88 L227.14,147.05 L315.71,201.01 L404.29,201.89 L492.86,156.67 L581.43,122.85 L670.00,106.89" fill="none" stroke="var(--accent-cool)" stroke-width="3"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="50" cy="156.55" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2017: 3.222"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="138.57" cy="143.88" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2018: 3.322"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="227.14" cy="147.05" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2019: 3.297"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="315.71" cy="201.01" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2020: 2.871"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="404.29" cy="201.89" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2021: 2.864"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="492.86" cy="156.67" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2022: 3.221"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="581.43" cy="122.85" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2023: 3.488"/>
+        <circle class="series-dot" data-series="deis" data-hidden="1" cx="670" cy="106.89" r="4" fill="var(--accent-cool)" data-tooltip="DEIS 2024: 3.614"/>
+        <text class="fig-value hi-cool series-dot" data-series="deis" data-hidden="1" x="670" y="97" text-anchor="end">3.614</text>
+
+        <text class="fig-axis" x="50" y="228" text-anchor="middle">2017</text>
+        <text class="fig-axis" x="138.57" y="228" text-anchor="middle">2018</text>
+        <text class="fig-axis" x="227.14" y="228" text-anchor="middle">2019</text>
+        <text class="fig-axis" x="315.71" y="228" text-anchor="middle">2020</text>
+        <text class="fig-axis" x="404.29" y="228" text-anchor="middle">2021</text>
+        <text class="fig-axis" x="492.86" y="228" text-anchor="middle">2022</text>
+        <text class="fig-axis" x="581.43" y="228" text-anchor="middle">2023</text>
+        <text class="fig-axis" x="670" y="228" text-anchor="middle">2024</text>
+      </svg>

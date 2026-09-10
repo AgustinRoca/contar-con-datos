@@ -526,9 +526,6 @@
         grid.querySelectorAll('.picto-person').forEach(function(p){ p.classList.add('shown'); });
       }
       layoutPictogram(grid, mode);
-      wrap.querySelectorAll('.picto-legend-block').forEach(function(lb){
-        lb.classList.toggle('active', lb.dataset.legend === mode);
-      });
     });
   });
   // Recorre todos los modos de un pictograma una sola vez (sin que se note,

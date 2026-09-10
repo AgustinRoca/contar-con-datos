@@ -122,8 +122,6 @@
   .mode-btn{ font-family:var(--sans); font-size:.85rem; font-weight:500; padding:8px 16px; border-radius:100px; border:1px solid var(--panel-line); background:var(--panel); color:var(--ink-soft); cursor:pointer; }
   .mode-btn:hover{ border-color:var(--accent-warm); }
   .mode-btn.selected{ background:var(--ink); border-color:var(--ink); color:var(--paper); }
-  .picto-legend-block{ display:none; }
-  .picto-legend-block.active{ display:flex; }
   .picto-row-label{ position:absolute; left:0; font-size:.72rem; color:var(--ink-soft); font-family:var(--mono); text-align:right; padding-right:10px; box-sizing:border-box; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
   /* pictogramas estaticos (no usan el layout con botones de agrupar) */
@@ -254,6 +252,13 @@
   </div>
 </header>
 
+<div class="art-divider" aria-hidden="true">
+    <svg viewBox="0 0 800 46" preserveAspectRatio="none">
+    <path d="M0,18 C100,40 200,0 320,24 C440,48 540,4 660,22 C720,32 760,10 800,24 L800,46 L0,46 Z" fill="var(--panel)"/>
+    <path d="M0,14 C140,42 250,2 390,26 C530,48 640,6 800,20" fill="none" stroke="var(--accent-warm)" stroke-width="1.2" opacity=".4"/>
+  </svg>
+</div>
+
 <section id="dimension">
   <div class="wide">
     <div class="eyebrow">I - La magnitud</div>
@@ -278,7 +283,7 @@
       <label><input type="checkbox" id="toggle-deis"> DEIS (Ministerio de Salud)</label>
     </div>
     <figure class="reveal">
-      <svg viewBox="0 0 740 300" role="img" aria-label="Casos de suicidio por año, Argentina 2017 a 2024, SAT y DEIS">
+            <svg viewBox="0 0 740 300" role="img" aria-label="Casos de suicidio por año, Argentina 2017 a 2024, SAT y DEIS">
         <line class="fig-grid" x1="50" y1="184.67" x2="670" y2="184.67"/>
         <line class="fig-grid" x1="50" y1="121.33" x2="670" y2="121.33"/>
         <line class="fig-grid" x1="50" y1="58.0" x2="670" y2="58.0"/>
@@ -714,7 +719,6 @@
     <path id="za" fill="#0e8074" stroke="var(--paper)" stroke-width="0.4" data-tooltip="21,1 cada 100.000 (OMS, 2021)" class="country" d="M476.731,588.02l-6.829,6.311l-1.625,3.898l-5.411-0.674l-4.503,4.002l-2.991-0.294l0.241-5.531l-1.062-0.372l-0.743,11.314l-5.308-0.052l-1.6-1.886l-2.344-0.024l2.137,6.129l3.812,3.604l-2.723,3.172l1.764,3.977l4.08,1.558l3.25-2.767l9.311,0.053l0.667-0.83l4.132-0.728l13.978-13.917l-0.053-4.382l-1.495,1.937h-2.238l-2.723-2.282l1.383-3.44l2.378-0.482l-0.217-7.071L476.731,588.02L476.731,588.02z M473.455,604.011l1.306-0.052l2.118,2.299l-0.061,2.662l-2.481,1.253l-0.155,0.883l-3.785,0.043l-1.186-2.853l1.081-2.092L473.455,604.011L473.455,604.011z"/>
     <path id="zm" fill="#64a89d" stroke="var(--paper)" stroke-width="0.4" data-tooltip="13,2 cada 100.000 (OMS, 2021)" class="country" d="M459.78,571.656l2.739,3.802l4.244,0.261l1.504,0.829l4.443,0.053l3.829-5.367l10.702-4.789l0.934-4.219l-1.244-6.043l-5.584-3.181l-3.727,0.26l-1.857,4.114l0.053,1.876l4.391,2.136l0.26,4.642l-3.775,0.208l-0.935-1.564l-10.495-4.479l-0.311,3.44l-4.962,0.155L459.78,571.656L459.78,571.656z"/>
     <path id="zw" fill="#0e8074" stroke="var(--paper)" stroke-width="0.4" data-tooltip="25,4 cada 100.000 (OMS, 2021)" class="country" d="M468.52,578.226l7.755,8.757l5.946,1.513l3.984-6.248l-0.312-8.281l-6.465-3.337l-2.431,1.098l-3.62,5.524l-5.014-0.053L468.52,578.226L468.52,578.226z"/>
-
         <circle cx="260" cy="633" r="5" fill="none" stroke="var(--ink)" stroke-width="2.5"/>
         <line x1="265" y1="633" x2="305" y2="633" stroke="var(--ink)" stroke-width="1.5"/>
         <text x="309" y="638" font-size="18" font-weight="600" fill="var(--ink)">Argentina: 7,7</text>
@@ -772,7 +776,7 @@
       <div class="quiz-result" id="quiz-result-anxiety" hidden>
         <p style="margin-bottom:.4em">En la Encuesta Nacional de Factores de Riesgo 2018 (INDEC), el <strong>18,4%</strong> de las personas encuestadas dijo tener ansiedad o depresión moderada o alta ese mismo día. Así se distribuyó esa respuesta según el ingreso del hogar:</p>
         <figure class="chart-bars">
-          <svg viewBox="0 0 500 260" role="img" aria-label="Porcentaje con ansiedad o depresión autoreportada por quintil de ingreso, ENFR 2018">
+                    <svg viewBox="0 0 500 260" role="img" aria-label="Porcentaje con ansiedad o depresión autoreportada por quintil de ingreso, ENFR 2018">
             <line class="fig-grid" x1="20" y1="210" x2="480" y2="210"/>
             <line class="fig-grid" x1="20" y1="133.6" x2="480" y2="133.6"/>
             <line class="fig-grid" x1="20" y1="57.2" x2="480" y2="57.2"/>
@@ -808,7 +812,7 @@
 </section>
 
 <div class="art-divider" aria-hidden="true">
-  <svg viewBox="0 0 800 46" preserveAspectRatio="none">
+    <svg viewBox="0 0 800 46" preserveAspectRatio="none">
     <path d="M0,23 C120,4 220,42 340,20 C460,-2 560,38 680,18 C740,8 780,26 800,20 L800,46 L0,46 Z" fill="var(--panel)"/>
     <path d="M0,26 C150,6 260,44 400,22 C540,0 650,40 800,16" fill="none" stroke="var(--accent-cool)" stroke-width="1.2" opacity=".4"/>
   </svg>
@@ -822,7 +826,7 @@
 
     <h4 style="margin-top:2em">Variación por franja etaria (desde 2017 a 2024)</h4>
     <figure class="reveal chart-bars">
-      <svg viewBox="0 0 640 270" role="img" aria-label="Variacion porcentual de casos entre 2017 y 2024 por franja etaria">
+            <svg viewBox="0 0 640 270" role="img" aria-label="Variacion porcentual de casos entre 2017 y 2024 por franja etaria">
         <line x1="320.0" y1="20" x2="320.0" y2="246" stroke-width="1.3" style="stroke:var(--ink-soft)"/>
 
         <rect class="bar bar-grow" x="252.9" y="20.0" width="67.1" height="34" fill="var(--accent-cool)" data-tooltip="0-19: -17,5% (2017 a 2024)"/>
@@ -850,7 +854,7 @@
 
     <h4 style="margin-top:2em">Por mes</h4>
     <figure class="reveal chart-bars">
-      <svg viewBox="0 0 740 240" role="img" aria-label="Casos de suicidio por mes, Argentina 2017-2024">
+            <svg viewBox="0 0 740 240" role="img" aria-label="Casos de suicidio por mes, Argentina 2017-2024">
         <line class="fig-grid" x1="46" y1="200.0" x2="720" y2="200.0"/>
         <text class="fig-axis" x="38" y="204.0" text-anchor="end">0</text>
         <line class="fig-grid" x1="46" y1="116.5" x2="720" y2="116.5"/>
@@ -900,7 +904,7 @@
 
     <h4 style="margin-top:2em">Por hora del día</h4>
     <figure class="reveal chart-bars">
-      <svg viewBox="0 0 920 250" role="img" aria-label="Casos de suicidio por hora del dia, coloreado segun la luz de dia, Argentina 2017-2024">
+            <svg viewBox="0 0 920 250" role="img" aria-label="Casos de suicidio por hora del dia, coloreado segun la luz de dia, Argentina 2017-2024">
         <line class="fig-grid" x1="48" y1="206.0" x2="900" y2="206.0"/>
         <text class="fig-axis" x="40" y="210.0" text-anchor="end">0</text>
         <line class="fig-grid" x1="48" y1="128.2" x2="900" y2="128.2"/>
@@ -956,7 +960,7 @@
 </section>
 
 <div class="art-divider" aria-hidden="true">
-  <svg viewBox="0 0 800 46" preserveAspectRatio="none">
+    <svg viewBox="0 0 800 46" preserveAspectRatio="none">
     <path d="M0,20 C110,40 240,2 360,22 C480,42 590,6 700,24 C740,32 780,14 800,22 L800,46 L0,46 Z" fill="var(--panel)"/>
     <path d="M0,18 C160,38 280,4 420,24 C560,44 660,8 800,26" fill="none" stroke="var(--accent-warm)" stroke-width="1.2" opacity=".4"/>
   </svg>
@@ -1027,7 +1031,7 @@
 </section>
 
 <div class="art-divider" aria-hidden="true">
-  <svg viewBox="0 0 800 46" preserveAspectRatio="none">
+    <svg viewBox="0 0 800 46" preserveAspectRatio="none">
     <path d="M0,26 C130,4 250,44 380,20 C500,-2 600,38 720,16 C750,10 780,24 800,18 L800,46 L0,46 Z" fill="var(--panel)"/>
     <path d="M0,22 C170,44 290,4 430,26 C570,46 670,6 800,24" fill="none" stroke="var(--accent-cool)" stroke-width="1.2" opacity=".4"/>
   </svg>
@@ -1620,9 +1624,6 @@
         grid.querySelectorAll('.picto-person').forEach(function(p){ p.classList.add('shown'); });
       }
       layoutPictogram(grid, mode);
-      wrap.querySelectorAll('.picto-legend-block').forEach(function(lb){
-        lb.classList.toggle('active', lb.dataset.legend === mode);
-      });
     });
   });
   // Recorre todos los modos de un pictograma una sola vez (sin que se note,

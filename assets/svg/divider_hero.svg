@@ -1,0 +1,4 @@
+  <svg viewBox="0 0 800 46" preserveAspectRatio="none">
+    <path d="M0,18 C100,40 200,0 320,24 C440,48 540,4 660,22 C720,32 760,10 800,24 L800,46 L0,46 Z" fill="var(--panel)"/>
+    <path d="M0,14 C140,42 250,2 390,26 C530,48 640,6 800,20" fill="none" stroke="var(--accent-warm)" stroke-width="1.2" opacity=".4"/>
+  </svg>

@@ -1,19 +1,34 @@
 """
-Arma las distintas versiones de la pieza a partir de tres fuentes separadas,
-para mantener el repo ordenado:
+Arma las distintas versiones de la pieza a partir de fuentes separadas, para
+que el repo quede ordenado por tipo de cosa en vez de todo mezclado en un
+HTML gigante:
 
-  output/pieza_template.html  -- esqueleto HTML (titulo + body), con
-                                  <link rel="stylesheet" href="pieza.css"> y
-                                  <script src="pieza.js"></script> como referencias
-  output/pieza.css            -- todos los estilos
-  output/pieza.js             -- toda la logica interactiva (quizzes, pictogramas,
-                                  tooltips, toggles SAT/DEIS, globo)
+  content/*.json               -- TEXTO EDITORIAL: titulos, parrafos, preguntas
+                                   de quiz, citas, fuentes del pie. Un archivo
+                                   por seccion de la pieza (hero, parte1,
+                                   parte2, parte3, cierre, footer, shared).
+                                   Para cambiar una frase de la pieza, se edita
+                                   ACA, no en el HTML.
+  assets/svg/*.svg              -- GRAFICOS: cada chart y cada divisor
+                                   decorativo en su propio archivo .svg
+                                   (incluye el mapa mundial, separado en el
+                                   contorno de paises + el marcador de
+                                   Argentina).
+  output/pieza_template.html    -- ESQUELETO HTML: la estructura de la pagina
+                                   (secciones, clases, botones), con
+                                   {{TXT:archivo.clave}} donde va un texto de
+                                   content/ y {{SVG:nombre}} donde va un
+                                   grafico de assets/svg/.
+  output/pieza.css              -- todos los estilos
+  output/pieza.js               -- toda la logica interactiva (quizzes,
+                                   pictogramas, tooltips, toggles SAT/DEIS,
+                                   globo)
 
-La plataforma de Artifacts no permite que el HTML publicado cargue un .css o .js
-externo en tiempo de ejecucion: tiene que ser un solo archivo autocontenido. Este
-script hace el "inlineado" (pegar el CSS dentro de <style> y el JS dentro de
-<script>) para producir ese archivo final, sin tener que editar tres archivos
-como si fueran uno solo.
+Este script hace el "armado": inyecta el texto y los graficos en el
+esqueleto, y despues pega el CSS dentro de <style> y el JS dentro de
+<script> (la plataforma de Artifacts no permite que el HTML publicado cargue
+un .css o .js externo en tiempo de ejecucion: tiene que ser un solo archivo
+autocontenido).
 
 Ademas resuelve dos cosas que varian segun donde se publique cada version:
 
@@ -42,13 +57,72 @@ Uso:
     python scripts/build_pieza.py
 """
 import base64
+import json
+import re
 from pathlib import Path
 
 OUT = Path("output")
 MEDIA = OUT / "media"
+SVG_DIR = Path("assets/svg")
+CONTENT_DIR = Path("content")
 template = (OUT / "pieza_template.html").read_text(encoding="utf-8")
 css = (OUT / "pieza.css").read_text(encoding="utf-8").rstrip("\n")
 js = (OUT / "pieza.js").read_text(encoding="utf-8").rstrip("\n")
+
+# El template no tiene los graficos SVG (ni el mapa mundial) pegados adentro:
+# cada uno vive en su propio archivo bajo assets/svg/, y aca se inyectan en
+# el lugar marcado con {{SVG:nombre_de_archivo}}.
+#
+# Excepcion: el contorno de paises del mapa mundial no se duplica en
+# assets/svg/, porque ya es la salida de un pipeline de datos (ver
+# scripts/process/) que vive en data/processed/; el build lo lee de ahi
+# directo para que haya un solo lugar donde regenerarlo.
+_SVG_TOKEN = re.compile(r"\{\{SVG:([a-zA-Z0-9_]+)\}\}")
+_SVG_OVERRIDES = {
+    "world_map_countries": Path("data/processed/world_map_country_level_inner.svg"),
+}
+
+
+def _inject_svgs(match: "re.Match[str]") -> str:
+    name = match.group(1)
+    path = _SVG_OVERRIDES.get(name, SVG_DIR / f"{name}.svg")
+    if not path.exists():
+        raise SystemExit(f"No se encontro {path} (referenciado como {{{{SVG:{name}}}}} en el template).")
+    return path.read_text(encoding="utf-8").rstrip("\n")
+
+
+template = _SVG_TOKEN.sub(_inject_svgs, template)
+
+# El texto editorial (titulos, parrafos, preguntas de quiz, citas, fuentes)
+# tampoco esta pegado en el template: vive en content/<archivo>.json, uno por
+# seccion de la pieza, y se inyecta donde el template marca {{TXT:archivo.clave}}.
+# Un valor que es una lista (por ahora, solo footer.sources) se renderiza como
+# una lista de <li> uno por elemento.
+_TXT_TOKEN = re.compile(r"\{\{TXT:([a-zA-Z0-9_]+)\.([a-zA-Z0-9_]+)\}\}")
+_content_cache: dict[str, dict] = {}
+
+
+def _content_for(fname: str) -> dict:
+    if fname not in _content_cache:
+        path = CONTENT_DIR / f"{fname}.json"
+        if not path.exists():
+            raise SystemExit(f"No se encontro {path} (referenciado en el template).")
+        _content_cache[fname] = json.loads(path.read_text(encoding="utf-8"))
+    return _content_cache[fname]
+
+
+def _inject_text(match: "re.Match[str]") -> str:
+    fname, key = match.group(1), match.group(2)
+    content = _content_for(fname)
+    if key not in content:
+        raise SystemExit(f"content/{fname}.json no tiene la clave '{key}' (referenciada como {{{{TXT:{fname}.{key}}}}}).")
+    value = content[key]
+    if isinstance(value, list):
+        return "\n".join(f"      <li>{item}</li>" for item in value)
+    return value
+
+
+template = _TXT_TOKEN.sub(_inject_text, template)
 
 html = template.replace(
     '<link rel="stylesheet" href="pieza.css">',

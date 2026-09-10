@@ -3,9 +3,31 @@
 __pycache__/
 *.pyc
 
-# Datasets crudos y limpios: pesados, no hace falta versionarlos.
-# Los datos que efectivamente usa la pieza publicada ya estan procesados
-# y volcados en output/ (pieza_visual.html / pieza_site.html + docs/).
-data/raw/
+# data/clean/ es reproducible corriendo scripts/clean/*.py sobre data/raw/,
+# no hace falta versionarlo.
 data/clean/
+
+# data/raw/: se versionan los CSVs de las fuentes que la pieza realmente usa
+# (SAT, DEIS, EMSE, OMS, Censo); todo lo demas (ENFR en .rar/.txt, y datasets
+# explorados pero no usados en la pieza final: encoprac, sedronar, msal_snvs,
+# eph, ipc) queda afuera del repo.
+data/raw/*
+!data/raw/SAT-SS-BU_2017-2024.csv
+!data/raw/datos_sobre_defunciones_2024.csv
+!data/raw/deis/
+data/raw/deis/*
+!data/raw/deis/defweb17.csv
+!data/raw/deis/defweb18.csv
+!data/raw/deis/defweb19.csv
+!data/raw/deis/defweb20_0.csv
+!data/raw/deis/defweb21_0.csv
+!data/raw/deis/defweb22_0.csv
+!data/raw/deis/defweb23.csv
+!data/raw/emse/
+data/raw/emse/*
+!data/raw/emse/emse_datosabiertos.zip
+!data/raw/who_suicide_rates/
+data/raw/who_suicide_rates/*
+!data/raw/who_suicide_rates/data.csv
+!data/raw/poblacion_censo2022_por_provincia.csv
 output/pieza_site_anon.html
